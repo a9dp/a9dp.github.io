@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+	<script src=/lb/my.js></script>
+	<script src=/lb/clip.js></script>
+	<script src=/lb/vue.min.js></script>
+	<link rel=stylesheet href=/lb/awesome/css/all.css></link>
+	<link rel=stylesheet href=/lb/bootstrap.min.css></link>
+	<meta name=viewport content='width=device-width, initial-scale=1.0'/>
+<script src="/lb/jquery.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+
+	</head>
+	<body>
+	
+	
+	 <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                        Sign-out
+                    </button>
+                    <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                        <i class="material-icons">account_circle</i>Sign-in with Facebook
+                    </button>
+             <script>
+window.onerror = function () {  var message = [arguments[0]] + ' at Line: ' + [arguments[2]]; window.webkit.messageHandlers.errorHandler.postMessage(message)};
+window.console.log = function() { for(var i = 0; i < arguments.length; i++) window.webkit.messageHandlers.logHandler.postMessage(arguments[i])  }; var sytaxErrorBrnoxProperty = 1;
+
+             </script>
+        <script>
+   console.warn = console.error = console.log = e => alert(e + '')
+          var firebaseConfig = {
+	apiKey: "AIzaSyATsprQmBaksAg7ZPoGGejFTLWclLP576Y",
+	authDomain: "glass-gasket-254006.firebaseapp.com",
+	databaseURL: "https://glass-gasket-254006.firebaseio.com",
+	projectId: "glass-gasket-254006",
+	storageBucket: "glass-gasket-254006.appspot.com",
+	messagingSenderId: "883400548883",
+	appId: "1:883400548883:web:61d2e40bfa097c9ba4d5e6",
+	measurementId: "G-GZ498J99QG"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        $('#sign-out')[0].hidden = false;
+    } else {
+        $('#sign-in')[0].hidden = false;
+        //Mình sẽ viết trong window.onload để chắc chắn đã có cái button đó
+        $('#sign-in').on('click', () => {
+console.log(1)
+            var provider = new firebase.auth.FacebookAuthProvider();
+            provider.setCustomParameters({
+                'display': 'popup' //Login dưới dạng popup
+            });
+            firebase.auth().signInWithPopup(provider).then(function (result) {
+                var token = result.credential.accessToken; //Token facebook của user
+                var user = result.user; //Thông tin của user
+                console.log(user)
+            }).catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                var email = error.email;
+                var credential = error.credential;
+console.log(error + '')
+            });
+        })
+    }
+
+
+firebase.auth().signOut().then(function () {
+                    alert("Logout thành công")
+                    $('#sign-out')[0].hidden = true;
+                }).catch(function (error) {
+                    alert("Đã có lỗi xảy ra trong quá trình logout. Xin thử lại")
+                });
+      
+ firebase.auth().signInWithPopup(provider).then(function (result) {
+                var token = result.credential.accessToken; //Token facebook của user
+                var user = result.user; //Thông tin của user
+                $('#sign-in')[0].hidden = true;
+            })
+})
+        </script>
+	</body>
+</html>
