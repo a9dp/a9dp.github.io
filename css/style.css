@@ -1369,7 +1369,7 @@ section#gallery {
 /*--/inner-page-- */
 
 .page-inner {
-    background: url(../images/banner4.jpg) no-repeat center;
+    background: url(../slider/1.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
