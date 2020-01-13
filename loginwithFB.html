@@ -26,7 +26,7 @@
                                 <button class="btn btn-block btn-social btn-google" id="btnGoogle" type="button"> <span class="fa fa-google"></span>Login with Google</button>
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-block btn-social btn-facebook" id="btnFacebook" type="button" onclick=login> <span class="fa fa-facebook"></span>Login with Facebook</button>
+                                <button class="btn btn-block btn-social btn-facebook" id="btnFacebook" type="button" onclick=login() > <span class="fa fa-facebook"></span>Login with Facebook</button>
                             </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
@@ -54,7 +54,7 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) aler
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 function login () {
-
+alert(10000) 
     var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(function (el) {
  alert("Login")
