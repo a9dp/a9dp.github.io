@@ -38,7 +38,7 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
         <script>
    console.warn = console.error = console.log = e => alert(e + '')
           
-(function() {
+
     console.log('Start file login with firebase');
     // Initialize Firebase
     var firebaseConfig = {
@@ -57,15 +57,13 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
 
     var database = firebase.database();
 
-    //Google singin provider
     var ggProvider = new firebase.auth.GoogleAuthProvider();
-    //Facebook singin provider
-    var fbProvider = new firebase.auth.FacebookAuthProvider();
-    //Login in variables
-    const btnGoogle = document.getElementById('btnGoogle');
-    const btnFaceBook = document.getElementById('btnFacebook');
 
-        //Sing in with Google
+    var fbProvider = new firebase.auth.FacebookAuthProvider();
+
+    var btnGoogle = document.getElementById('btnGoogle');
+    var btnFaceBook = document.getElementById('btnFacebook');
+
         btnGoogle.addEventListener('click', e => {
             firebase.auth().signInWithPopup(ggProvider).then(function(result) {
                 var token = result.credential.accessToken;
@@ -102,7 +100,6 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
             });
         }, false)
         //jquery 
-}())
 
         </script>
 	</body>
