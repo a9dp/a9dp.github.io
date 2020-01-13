@@ -66,16 +66,15 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
 
         btnGoogle.addEventListener('click', e => {
             firebase.auth().signInWithPopup(ggProvider).then(function(result) {
-                var token = result.credential.accessToken;
-                var user = result.user;
-                console.log('User>>Goole>>>>', user);
-                userId = user.uid;
+                
+                console.log('User>>Goole>>>>');
+                //userId = user.uid;
 
             }).catch(function(error) {
-                console.error('Error: hande error here>>>', error.code)
+                console.error('fError: hande error here>>>', error.code)
             })
-        }, false)
-
+        })
+Ô
         //Sing in with Facebook
         btnFaceBook.addEventListener('click', e => {
             firebase.auth().signInWithPopup(fbProvider).then(function(result) {
@@ -85,7 +84,7 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
                 var user = result.user;
                 console.log('User>>Facebook>', user);
                 // ...
-                userId = user.uid;
+                //userId = user.uid;
             
             }).catch(function(error) {
                 // Handle Errors here.
@@ -98,7 +97,7 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) wind
                 // ...
                 console.error('Error: hande error here>Facebook>>', error.code)
             });
-        }, false)
+        })
         //jquery 
 
         </script>
