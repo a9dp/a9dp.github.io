@@ -56,7 +56,7 @@ window.console.log = function() { for(var i = 0; i < arguments.length; i++) aler
 function login () {
 alert(10000) 
     var provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithRedirect(provider)
+  firebase.auth().signInWithRedirect(provider, function ()  {alert("ok")} )
 firebase.auth().getRedirectResult().then(function (el) {
  alert("Login")
 }).catch(e => alert(e + ''))
