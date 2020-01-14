@@ -169,17 +169,17 @@ my('#post-blog').click(function () {
 					
 				},
 				function () {
-					friendlyChat.post()
+					//friendlyChat.post()
 				},
 				function () {
 					sto.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-			 friendlyChat.post(downloadURL)
+			 //friendlyChat.post(downloadURL)
  })
 				}
 			)
 			
 		}
-		else friendlyChat.post();
+		//else friendlyChat.post();
 		
 	}
 	else {
