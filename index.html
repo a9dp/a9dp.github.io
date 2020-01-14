@@ -35,13 +35,17 @@
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 	<!-- //Fonts -->
-	<script src="/scripts/vue.min.js"></script>
+
 	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
 
-<script src="init-firebase.js"></script>
+    <script src="scripts/vue.min.js"></script>
+
+    <script src="../init-firebase.js"></script>
+
 </head>
 
 <body>
@@ -306,26 +310,26 @@
                 <h3 class="tittle mb-lg-3 mb-3"> Blog Posts</h3>
             </div>
             <!-- /blog grid vue-->
-            <div class="row mt-4" v-for="(blogPost, key) in posts" :key=key>
+            <div class="row mt-4" v-for="(blog, key) in posts" :key=key>
                             <div class="col-lg-6  mt-lg-5 mt-4 mx-auto">
                     <div class="card">
                         <div class="card-header p-0 position-relative">
-                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)">
-                                <img class="card-img-bottom " :src="blogPost['img-descript']" :alt="blogPost.title">
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')">
+                                <img class="card-img-bottom " :src="blog['img-descript']" :alt="blog.title">
                                 
                             </a>
                         </div>
                         <div class="card-body">
                             <h5 class="blog-title card-title font-weight-bold">
-                                <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)">{{ blogPost.title }}</a>
+                                <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')">{{ blog.title }}</a>
                             </h5>
-                            <p v-html="blogPost.text"></p>
+                            <p v-html="blog.descript"></p>
                             <div class="blog-user-info d-flex my-3">
-                                <label class=""> <span class="fa fa-user mr-3"></span> {{ blogPost.name }}</label>
-                                <label class="mx-3"> <span class="fa fa-clock-o mr-3"></span> {{ getTime(blogPost.time) }}</label>
-                                <label class=""> <span class="fa fa-calendar mr-3"></span> {{ getDate(blogPost.time) }}</label>
+                                <label class=""> <span class="fa fa-user mr-3"></span> {{ blog.name }}</label>
+                                <label class="mx-3"> <span class="fa fa-clock-o mr-3"></span> {{ getTime(blog.time) }}</label>
+                                <label class=""> <span class="fa fa-calendar mr-3"></span> {{ getDate(blog.time) }}</label>
                             </div>
-                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)" class="btn blog-btn h_care-bnr-btn">  
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')" class="btn blog-btn h_care-bnr-btn">  
                                 Read more
                            </a>
                         </div>
@@ -418,13 +422,10 @@
             <!-- //copyright -->
         </div>
     </footer>
-    <script src=auth-login.js>
-    </script>
-    <link rel=stylesheet href=auth-login.css></link>
-	<script>
+    <!-- footer -->
+<script>
 addEventListener('load', function () {
-
- new Vue({
+new Vue({
     el: "#posts",
     data: {
         posts: []
@@ -456,28 +457,20 @@ addEventListener('load', function () {
 				this.to2(m)
 			].join(':') + d
 			
-        },
-        buid: function (url) {
-            return url.replace(/ /gi, '+')
         }
     },
     mounted: function () {
         var _ = this
-        database.ref('post-preview')
-		 .orderBy('time')
-		 .limitToLast(10)
-        .on('child_added', function (e) {
-            _.posts.push(e)
+        database.ref('posted-preview').orderByChild('time').limitToLast(10)
+        .once('value', function (e) {
+            for (var i in e)
+                _.posts.push(e[i]);
         })
-        .on('child_changed', function (e) {
-    		 _.posts.push(e)
-		 })
         
     }
 })
 })
-	</script>
-    <!-- footer -->
+</script>
 </body>
 
 </html>

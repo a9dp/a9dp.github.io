@@ -75,47 +75,22 @@ alert(010)
 
 
 
-
 FriendlyChat.prototype.post = function (e) {
 	if (this.checkSignedInWithMessage()) {
 
-	var currentUser = this.auth.currentUser, _ = this;
+	var currentUser = this.auth.currentUser
 
-
-var title, descript, text, time;
-title = my("#title").html()
-descript = my("#descript").html()
-text = my("#content").html()
-time = Date.now()
-	firebase.database()
-	.ref("posted").push({
+	this.messagesRef.push({
 	  name: currentUser.displayName,
-	  photoUrl: currentUser.photoURL || '/images/no-login.png',
-	  title: title,
-	  descript: descript,
-	  text: text,
-	  time: time,
-	  "img-descript": e ? e : ''
+	  text: posted.text,
+	  title: posted.title,
+	  posted: posted.posted,
+	  time: Date.now(),
+	  descript: e,
+	  photoUrl: currentUser.photoURL || '/images/no-login.png'
 	}).then(function() {
-		_.database.ref("posted-preview").push({
-	  		name: currentUser.displayName,
-	  		photoUrl: currentUser.photoURL || '/images/no-login.png',
-	  		title: title,
-	  		descript: descript,
-	  		time: time,
-	  		"img-descript": e ? e : ''
-		})
-		.then(function () {
-			my('#loading')
-			.attr('hidden', true)
-			alert("Đã đăng")
-		})
-		.catch(function (e) {
-			my('#loading')
-			.attr('hidden', true)
-			alert("Lỗi: " + e)
-		})
-
+		my('#loading')
+		.attr('hidden', true)
 	})
 	.catch(function(error) {
 		my('#loading')
@@ -125,19 +100,20 @@ time = Date.now()
   }
 }
 
-
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-	my('#user-pic').css("background-image", "url(" + user.photoURL + ")")
+	my('#user-pic')[0]
+	.backgroundImage = 'url(' + user.photoURL + ')'
 	
-	my('#user-name').text(user.displayName).unAttr("hidden")
+	my('#user-name').text(user.displayName)
 	
 	my('#sign-out').unAttr('hidden')
 	
 	my('#sign-in').attr('hidden', true)
 	
   } else {
-  	my('#user-pic').css("background-image",  'url("../images/no-login.png")')
+  	my('#user-pic')[0]
+	.backgroundImage = 'url(/var/mobile/Documents/a9/no-login.png)'
 	
 	my('#user-name').attr('hidden', true)
 	
@@ -166,7 +142,7 @@ my('#post-blog').click(function () {
 			// if file exists
 			
 			var sto = friendlyChat.storage
-			.ref('posted-image/' + Date.now()  + my.expando)
+			.ref('posted-image')
 			.put(file, {
 				contentType: file.type
 			})
