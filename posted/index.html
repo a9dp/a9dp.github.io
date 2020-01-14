@@ -398,7 +398,6 @@ function init (data, key) {
 	
 		var rateUs = typeof rate === 'object' && rate[firebase
 		.auth().currentUser.uid] - 0
-alert(my(".rating > input").length, firebase.auth().currentUser.uid)
 		my('.rating > input')
 		.each(function (key, val) {
 		    if (rateUs && (key + 1 === rateUs))
@@ -407,8 +406,7 @@ alert(my(".rating > input").length, firebase.auth().currentUser.uid)
 		.then(function () {
 alert(key)
 		   firebase.database()
-		        .ref('posted-preview/' + key + '/rate/' + firebase.auth().currentUser.uid)
-				.set(key)
+		        .ref('posted/' + key + '/rate/' + firebase.auth().currentUser.uid).set(key)
 		    })
 		})
 	}
