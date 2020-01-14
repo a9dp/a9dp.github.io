@@ -35,11 +35,13 @@
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 	<!-- //Fonts -->
+	<script src="/scripts/vue.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
 
-    <script src="scripts/vue.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
 
-    <script src="scripts/init.js"></script>
-
+<script src="init-firebase.js"></script>
 </head>
 
 <body>
@@ -74,6 +76,17 @@
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
+						<li id=account>
+						
+        <img id="user-pic"/>
+        <span hidden id="user-name"></span>
+        <a hidden id="sign-out">
+	     Sign-out
+        </a>
+        <a id="sign-in">
+	     Sign-in with Facebook
+        </a>
+						</li>
                     </ul>
 
                 </nav>
@@ -297,22 +310,22 @@
                             <div class="col-lg-6  mt-lg-5 mt-4 mx-auto">
                     <div class="card">
                         <div class="card-header p-0 position-relative">
-                            <a :href="blogPost.linkrel">
-                                <img class="card-img-bottom " :src="blogPost.image" :alt="blogPost.alt">
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)">
+                                <img class="card-img-bottom " :src="blogPost['img-descript']" :alt="blogPost.title">
                                 
                             </a>
                         </div>
                         <div class="card-body">
                             <h5 class="blog-title card-title font-weight-bold">
-                                <a :href="blogPost.linkrel">{{ blogPost.title }}</a>
+                                <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)">{{ blogPost.title }}</a>
                             </h5>
-                            <p v-html="blogPost.html"></p>
+                            <p v-html="blogPost.text"></p>
                             <div class="blog-user-info d-flex my-3">
-                                <label class=""> <span class="fa fa-user mr-3"></span> {{ blogPost.author }}</label>
+                                <label class=""> <span class="fa fa-user mr-3"></span> {{ blogPost.name }}</label>
                                 <label class="mx-3"> <span class="fa fa-clock-o mr-3"></span> {{ getTime(blogPost.time) }}</label>
                                 <label class=""> <span class="fa fa-calendar mr-3"></span> {{ getDate(blogPost.time) }}</label>
                             </div>
-                            <a :href="blogPost.linkrel" class="btn blog-btn h_care-bnr-btn">  
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + buid(blogPost.title)" class="btn blog-btn h_care-bnr-btn">  
                                 Read more
                            </a>
                         </div>
@@ -405,6 +418,65 @@
             <!-- //copyright -->
         </div>
     </footer>
+    <script src=auth-login.js>
+    </script>
+    <link rel=stylesheet href=auth-login.css></link>
+	<script>
+addEventListener('load', function () {
+
+ new Vue({
+    el: "#posts",
+    data: {
+        posts: []
+    },
+    methods: {
+        to2: function (e) {
+            return e < 10 ? '0' + e : e
+        },
+        getDate: function (e) {
+            var n = new Date(e)
+            
+            return [
+            this.to2(n.getDate()),
+            this.to2(n.getMonth() + 1),
+            this.to2(n.getFullYear())
+            ].join('.')
+        },
+        getTime: function (e) {
+            var n = new Date(e)
+            var h = this.to2(n.getHours())
+			 var m = this.to2(n.getSeconds())
+
+			var d = h < 12 ? ' AM' : ' PM'
+			
+			if (h > 12) h -= 12
+			
+			return [
+				this.to2(h),
+				this.to2(m)
+			].join(':') + d
+			
+        },
+        buid: function (url) {
+            return url.replace(/ /gi, '+')
+        }
+    },
+    mounted: function () {
+        var _ = this
+        database.ref('post-preview')
+		 .orderBy('time')
+		 .limitToLast(10)
+        .on('child_added', function (e) {
+            _.posts.push(e)
+        })
+        .on('child_changed', function (e) {
+    		 _.posts.push(e)
+		 })
+        
+    }
+})
+})
+	</script>
     <!-- footer -->
 </body>
 
