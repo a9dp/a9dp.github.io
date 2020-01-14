@@ -75,22 +75,39 @@ alert(010)
 
 
 
+
 FriendlyChat.prototype.post = function (e) {
 	if (this.checkSignedInWithMessage()) {
 
-	var currentUser = this.auth.currentUser
+	var currentUser = this.auth.currentUser, _ = this;
 
-	this.messagesRef.push({
+	this.database.ref("posted").push({
 	  name: currentUser.displayName,
-	  text: posted.text,
-	  title: posted.title,
-	  posted: posted.posted,
+	  text: my('#content').html(),
+	  title: my('#title').html(),
+	  posted: my('#descript').html(),
 	  time: Date.now(),
 	  descript: e,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png'
 	}).then(function() {
-		my('#loading')
-		.attr('hidden', true)
+		_.database.ref("posted-preview").push({
+	  name: currentUser.displayName,
+	  title: my('#title').html(),
+	  posted: my('#descript').html(),
+	  time: Date.now(),
+	  descript: e,
+	  photoUrl: currentUser.photoURL || '/images/no-login.png'
+		})
+		.then(function () {
+			my('#loading')
+			.attr('hidden', true)
+		})
+		.catch(function (e) {
+			my('#loading')
+			.attr('hidden', true)
+		alert("error" + e)
+		})
+
 	})
 	.catch(function(error) {
 		my('#loading')
@@ -99,6 +116,7 @@ FriendlyChat.prototype.post = function (e) {
 	})
   }
 }
+
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
