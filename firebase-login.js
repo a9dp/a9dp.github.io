@@ -1,6 +1,3 @@
-onerror = console.error = console.warn = function () {
- alert(arguments[0])
-}
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
