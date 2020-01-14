@@ -266,7 +266,7 @@ function getRequest () {
 
 var req = getRequest()
 
-database.ref('posted')
+firebase.database().ref('posted')
 .orderByChild('title')
 .startAt(req).endAt(req)
 .on('child_added', function (e) {
