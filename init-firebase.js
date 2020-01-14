@@ -118,8 +118,7 @@ FriendlyChat.prototype.signInFb = function() {
 	var provider = new firebase.auth
 	.FacebookAuthProvider()
 	
-	provider
-	.addScope('user_birthday')
+	//provider.addScope('user_birthday')
 	
 	provider.setCustomParameters({
 		'display': 'popup'
