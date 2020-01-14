@@ -229,7 +229,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 	my('#sign-in').attr('hidden', true)
 	
   } else {
-  	my('#user-pic').css("background-image",  'url("../images/no-login.png")')
+  	my('#user-pic').css("background-image",  'url("/images/no-login.png")')
 	
 	my('#user-name').attr('hidden', true)
 	
