@@ -179,7 +179,7 @@ my('#post-blog').click(function () {
 			)
 			
 		}
-		//else friendlyChat.post();
+		else friendlyChat.post();
 		
 	}
 	else {
