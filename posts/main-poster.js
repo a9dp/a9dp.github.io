@@ -89,7 +89,7 @@ FriendlyChat.prototype.post = function (e) {
 	  time: Date.now(),
 	  descript: e,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png'
-	}).then(function() {/*
+	}).then(function() {
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
 	  title: my('#title').html(),
@@ -106,7 +106,7 @@ FriendlyChat.prototype.post = function (e) {
 			my('#loading')
 			.attr('hidden', true)
 		alert("error" + e)
-		})*/
+		})
 
 	})
 	.catch(function(error) {
