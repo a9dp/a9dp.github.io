@@ -505,9 +505,8 @@ new Vue({
     mounted: function () {
         var _ = this
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
-        .once('value', function (e) {
-            for (var i in e)
-                alert(JSON.stringify(e)) ;
+        .on('child_added', function (e) {
+            _.posts.unshift(e)
         })
         
     }
