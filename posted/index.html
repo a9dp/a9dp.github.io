@@ -377,7 +377,7 @@ firebase.database().ref('posted')
 	
 })
 
-function init (data, key) {
+function init (data, _key) {
 
 	my('#loading').attr('hidden', true)
 
@@ -406,7 +406,7 @@ function init (data, key) {
 		.then(function () {
 alert(key)
 		   firebase.database()
-		        .ref('posted/' + key + '/rate/' + firebase.auth().currentUser.uid).set(key)
+		        .ref('posted/' + _key + '/rate/' + firebase.auth().currentUser.uid).set(key)
 		    })
 		})
 	}
