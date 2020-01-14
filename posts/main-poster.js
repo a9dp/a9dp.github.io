@@ -105,14 +105,14 @@ firebase.auth().onAuthStateChanged(function (user) {
 	my('#user-pic')[0]
 	.backgroundImage = 'url(' + user.photoURL + ')'
 	
-	my('#user-name').text(user.displayName)
+	my('#user-name').text(user.displayName).unAttr("hidden")
 	
 	my('#sign-out').unAttr('hidden')
 	
 	my('#sign-in').attr('hidden', true)
 	
   } else {
-  	my('#user-pic')[0]
+  	my('#user-pic')[0].style
 	.backgroundImage = 'url(/var/mobile/Documents/a9/no-login.png)'
 	
 	my('#user-name').attr('hidden', true)
