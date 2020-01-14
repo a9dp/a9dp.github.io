@@ -81,7 +81,7 @@ FriendlyChat.prototype.post = function (e) {
 
 	var currentUser = this.auth.currentUser, _ = this;
 
-	this.database.ref("posted").push({
+	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
 	  text: my('#content').html(),
 	  title: my('#title').html(),
