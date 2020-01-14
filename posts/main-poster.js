@@ -84,11 +84,6 @@ alert(currentUser.displayName)
 
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
-	  text: my('#content').html(),
-	  title: my('#title').html(),
-	  posted: my('#descript').html(),
-	  time: Date.now(),
-	  descript: e,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png'
 	}).then(function() {/*
 		_.database.ref("posted-preview").push({
