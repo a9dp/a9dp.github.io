@@ -124,7 +124,7 @@
 						<ul class="single-info mt-md-4 my-3 d-flex">
 							<li><a href="#" id=date><span class="fa fa-calendar"></span></a> </li>
 							<li><a href="#"><span class="fa fa-comment-o mx-1"></span> 0</a></li>
-							<li><a href="#"><span class="fa fa-heart-o"></span> 0 </a></li>
+							<li><a href="#"><span class="fa fa-heart-o"></span> <span id=love>0</span> </a></li>
 						</ul>
 						<span id=content></span>
 						<ul class="social_section_1info mt-lg-5 mt-3">
@@ -376,24 +376,23 @@ firebase.database().ref('posted')
 	init(e.val(), e.key)
 	
 })
-if (!firebase.auth().currentUser) {
-my('.rating > input').each(function () {
-my(this).off("change").on('change')
-.then(function () {
-     e.preventDefault()
-alert("Bạn phải đăng nhập để thực hiện thao tác này");
-return false
-})
-}) 
-} 
+
+my('#title, title').eacg(function () {this.innerHTML = '404 Not Found'})
+my('#descript').html('Trang không tồn tại')
+	
+my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn tại trên cơ sở dữ liệu')
+
+my('#date').html(0)
 
 function init (data, _key) {
 
 	my('#loading').attr('hidden', true)
 
 	if (data) {
-	
-		my('#title').html(data.title)
+		var n = 0, s = 0;
+		data.rate && my.each(function (key, val) {n++; s += val})
+		my('#love').text(round(s / n))
+		my('#title, title').eacg(function () {this.innerHTML = data.title})
 	my('#descript').html(data.descript)
 	
 	my('#content').html(data.text)
@@ -414,9 +413,13 @@ function init (data, _key) {
 		    	this.checked = true;
 		my(this).off("change").on('change')
 		.then(function () {
+			if (firebase.auth().currentUser) {
 		   firebase.database()
 		        .ref('posted/' + _key + '/rate/' + firebase.auth().currentUser.uid).set(key)
 		    })
+		    } else {
+		        alert("Chức năng này yêu cầu bạn đăng nhập")
+		    }
 		})
 	}
 	//#date#posted#content
@@ -424,7 +427,7 @@ function init (data, _key) {
 	//#date#posted#content
 	}
 	else {
-		my('#title').html('404 Not Found')
+		my('#title, title').eacg(function () {this.innerHTML = '404 Not Found'})
 		my('#descript').html('Trang không tồn tại')
 	
 		my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn tại trên cơ sở dữ liệu')
