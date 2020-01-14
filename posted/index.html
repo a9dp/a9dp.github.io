@@ -403,7 +403,7 @@ alert(my(".rating > input").length, firebase.auth().currentUser.uid)
 		.each(function (key, val) {
 		    if (rateUs && (key + 1 === rateUs))
 		    	alert(this.checked = true)
-		my(this).off("input").on('input')
+		my(this).off("change").on('change')
 		.then(function () {
 alert(key)
 		   firebase.database()
