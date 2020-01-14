@@ -398,11 +398,12 @@ function init (data, key) {
 	
 		var rateUs = typeof rate === 'object' && rate[firebase
 		.auth().currentUser.uid] - 0
-			my('.rating[name="rating"]')
+
+		my('.rating[name="rating"]')
 		.each(function (key, val) {
 		    if (rateUs && (key + 1 === rateUs))
 		    	alert(this.checked = true)
-		    
+		    alert(key)
 		my(this).on('input')
 		.then(function () {
 alert(key)
