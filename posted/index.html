@@ -401,10 +401,11 @@ function init (data, key) {
 			my('.rating[name="rating"]')
 		.each(function (key, val) {
 		    if (rateUs && (key + 1 === rateUs))
-		    	this.checked = true
+		    	alert(this.checked = true)
 		    
 		my(this).on('input')
 		.then(function () {
+alert(key)
 		   firebase.database()
 		        .ref('posted-preview/' + key + '/rate/' + firebase.auth().currentUser.uid)
 				.set(key)
