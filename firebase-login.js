@@ -1,7 +1,7 @@
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-alert(JSON.stringify(firebase.auth.currentUser)) 
+alert(JSON.stringify(firebase.auth().currentUser )) 
 	my('#user-pic').css("background-image", "url(" + user.photoURL + ")")
 	
 	my('#user-name').text(user.displayName).unAttr("hidden")
