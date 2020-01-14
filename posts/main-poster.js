@@ -102,8 +102,8 @@ FriendlyChat.prototype.post = function (e) {
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-	my('#user-pic')[0]
-	.backgroundImage = 'url(' + user.photoURL + ')'
+alert(user.photoURL) 
+	my('#user-pic').attr("src", user.photoURL)
 	
 	my('#user-name').text(user.displayName).unAttr("hidden")
 	
@@ -112,8 +112,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 	my('#sign-in').attr('hidden', true)
 	
   } else {
-  	my('#user-pic')[0].style
-	.backgroundImage = 'url(/var/mobile/Documents/a9/no-login.png)'
+  	my('#user-pic').attr("src",  '../images/no-login.png')
 	
 	my('#user-name').attr('hidden', true)
 	
