@@ -391,6 +391,7 @@ function init (data, _key) {
 		var n = 0, s = 0;
 		data.rate && my.each(function (key, val) {n++; s += val})
 		my('#love').text(round(s / n))
+alert(s + '-' + n) 
 		my('#title, title').each(function () {this.innerHTML = data.title})
 	my('#descript').html(data.descript)
 	
