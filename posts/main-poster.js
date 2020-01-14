@@ -80,14 +80,15 @@ FriendlyChat.prototype.post = function (e) {
 	if (this.checkSignedInWithMessage()) {
 
 	var currentUser = this.auth.currentUser, _ = this;
-alert(currentUser.displayName) 
+
+
 var title, descript, text, time;
 title = my("#title").html()
 descript = my("#descript").html()
 text = my("#content").html()
 time = Date.now()
-alert(e + '') 
-	firebase.database().ref("posted").push({
+	firebase.database()
+	.ref("posted").push({
 	  name: currentUser.displayName,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png',
 	  title: title,
@@ -96,25 +97,23 @@ alert(e + '')
 	  time: time,
 	  "img-descript": e ? e : ''
 	}).then(function() {
-alert("done 1")
-
 		_.database.ref("posted-preview").push({
-	  name: currentUser.displayName,
-	  photoUrl: currentUser.photoURL || '/images/no-login.png',
-	  title: title,
-	  descript: descript,
-	  time: time,
-	  "img-descript": e ? e : ''
+	  		name: currentUser.displayName,
+	  		photoUrl: currentUser.photoURL || '/images/no-login.png',
+	  		title: title,
+	  		descript: descript,
+	  		time: time,
+	  		"img-descript": e ? e : ''
 		})
 		.then(function () {
 			my('#loading')
 			.attr('hidden', true)
-alert("done") 
+			alert("Đã đăng")
 		})
 		.catch(function (e) {
 			my('#loading')
 			.attr('hidden', true)
-		alert("error" + e)
+			alert("Lỗi: " + e)
 		})
 
 	})
@@ -129,7 +128,6 @@ alert("done")
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-alert(user.photoURL) 
 	my('#user-pic').css("background-image", "url(" + user.photoURL + ")")
 	
 	my('#user-name').text(user.displayName).unAttr("hidden")
