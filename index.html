@@ -48,7 +48,45 @@ console.error = console.warn = e => alert(e + '')
 <script src="init-firebase.js"></script>
  
     <script src="scripts/vue.min.js"></script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
 
+#user-pic {
+  position: relative;
+  display: inline-block;
+  background-image: url('/images/no-login.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+  }
+}
+
+#account > * {
+    line-height: 40px;
+}
+</style>
 </head>
 
 <body>
