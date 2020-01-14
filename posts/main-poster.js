@@ -86,6 +86,7 @@ title = my("#title").html()
 descript = my("#descript").html()
 text = my("#content").html()
 time = Date.now()
+alert(e + '') 
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png',
@@ -94,7 +95,9 @@ time = Date.now()
 	  text: text,
 	  time: time,
 	  "img-descript": e ? e : ''
-	}).then(function() {/*
+	}).then(function() {
+alert("done 1")
+/*
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
 	  title: my('#title').html(),
@@ -165,7 +168,7 @@ my('#post-blog').click(function () {
 			// if file exists
 			
 			var sto = friendlyChat.storage
-			.ref('posted-image')
+			.ref('posted-image/' + Date.now()  + my.expando)
 			.put(file, {
 				contentType: file.type
 			})
@@ -175,11 +178,11 @@ my('#post-blog').click(function () {
 					
 				},
 				function () {
-					//friendlyChat.post()
+					friendlyChat.post()
 				},
 				function () {
 					sto.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-			 //friendlyChat.post(downloadURL)
+			 friendlyChat.post(downloadURL)
  })
 				}
 			)
