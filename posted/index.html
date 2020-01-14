@@ -376,6 +376,16 @@ firebase.database().ref('posted')
 	init(e.val(), e.key)
 	
 })
+if (!firebase.auth().currentUser) {
+my('.rating > input').each(function () {
+my(this).off("change").on('change')
+.then(function () {
+     e.preventDefault()
+alert("Bạn phải đăng nhập để thực hiện thao tác này");
+return false
+})
+} 
+} 
 
 function init (data, _key) {
 
@@ -400,11 +410,10 @@ function init (data, _key) {
 		.auth().currentUser.uid] - 0
 		my('.rating > input')
 		.each(function (key, val) {
-		    if (rateUs && (key === 4 - rateUs))
+		    if (rateUs && (key === rateUs))
 		    	this.checked = true;
 		my(this).off("change").on('change')
 		.then(function () {
-alert(key)
 		   firebase.database()
 		        .ref('posted/' + _key + '/rate/' + firebase.auth().currentUser.uid).set(key)
 		    })
