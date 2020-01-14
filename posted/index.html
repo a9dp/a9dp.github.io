@@ -400,8 +400,8 @@ function init (data, _key) {
 		.auth().currentUser.uid] - 0
 		my('.rating > input')
 		.each(function (key, val) {
-		    if (rateUs && (key + 1 === rateUs))
-		    	alert(this.checked = true)
+		    if (rateUs && (key === 4 - rateUs))
+		    	this.checked = true;
 		my(this).off("change").on('change')
 		.then(function () {
 alert(key)
