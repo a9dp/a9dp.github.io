@@ -100,11 +100,11 @@ alert("done 1")
 
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
-	  title: my('#title').html(),
-	  posted: my('#descript').html(),
-	  time: Date.now(),
-	  descript: e,
-	  photoUrl: currentUser.photoURL || '/images/no-login.png'
+	  photoUrl: currentUser.photoURL || '/images/no-login.png',
+	  title: title,
+	  descript: descript,
+	  time: time,
+	  "img-descript": e ? e : ''
 		})
 		.then(function () {
 			my('#loading')
