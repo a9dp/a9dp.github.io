@@ -80,6 +80,7 @@ FriendlyChat.prototype.post = function (e) {
 	if (this.checkSignedInWithMessage()) {
 
 	var currentUser = this.auth.currentUser, _ = this;
+alert(currentUser.displayName) 
 /*
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
