@@ -97,7 +97,7 @@ alert(e + '')
 	  "img-descript": e ? e : ''
 	}).then(function() {
 alert("done 1")
-/*
+
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
 	  title: my('#title').html(),
@@ -115,7 +115,7 @@ alert("done")
 			my('#loading')
 			.attr('hidden', true)
 		alert("error" + e)
-		})*/
+		})
 
 	})
 	.catch(function(error) {
