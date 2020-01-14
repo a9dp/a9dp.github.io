@@ -37,7 +37,46 @@
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-storage.js"></script>
     <script src="init-firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js "></script> 
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+#user-pic {
+  position: relative;
+  display: inline-block;
+  background-image: url('/images/no-login.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+  }
+}
+
+#account > * {
+    line-height: 40px;
+}
+</style>
 </head>
 <body>
     <!-- mian-content -->
@@ -70,6 +109,17 @@
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
+   		<li id=account>
+						
+        <img id="user-pic"/>
+        <span hidden id="user-name"></span>
+        <a hidden id="sign-out">
+	     Sign-out
+        </a>
+        <a id="sign-in">
+	     Sign-in with Facebook
+        </a>
+						</li>
                     </ul>
                 </nav>
                 <!-- //nav -->
