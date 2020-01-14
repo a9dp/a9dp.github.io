@@ -1,3 +1,5 @@
+onerror = console.error = console.warn = d => alert(d + '') 
+
 var config = {
 	apiKey: "AIzaSyATsprQmBaksAg7ZPoGGejFTLWclLP576Y",
 	authDomain: "glass-gasket-254006.firebaseapp.com",
