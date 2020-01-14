@@ -1,4 +1,4 @@
-onerror = function () {
+onerror = console.error = console.warn = function () {
  alert(arguments[0])
 }
 
