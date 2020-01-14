@@ -350,8 +350,7 @@
 	<!-- footer -->
 <script src=/firebase-login.js></script>
 	<script type=text/javascript>
-	
-function getRequest () {
+	function getRequest () {
 	var url = location.href
 	
 	if (url.indexOf('?goto=') < 0)
@@ -377,7 +376,7 @@ firebase.database().ref('posted')
 	
 })
 
-my('#title, title').eacg(function () {this.innerHTML = '404 Not Found'})
+my('#title, title').each(function () {this.innerHTML = '404 Not Found'})
 my('#descript').html('Trang không tồn tại')
 	
 my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn tại trên cơ sở dữ liệu')
@@ -392,7 +391,7 @@ function init (data, _key) {
 		var n = 0, s = 0;
 		data.rate && my.each(function (key, val) {n++; s += val})
 		my('#love').text(round(s / n))
-		my('#title, title').eacg(function () {this.innerHTML = data.title})
+		my('#title, title').each(function () {this.innerHTML = data.title})
 	my('#descript').html(data.descript)
 	
 	my('#content').html(data.text)
@@ -416,26 +415,24 @@ function init (data, _key) {
 			if (firebase.auth().currentUser) {
 		   firebase.database()
 		        .ref('posted/' + _key + '/rate/' + firebase.auth().currentUser.uid).set(key)
-		    })
 		    } else {
 		        alert("Chức năng này yêu cầu bạn đăng nhập")
 		    }
 		})
-	}
+		})
 	//#date#posted#content
 	
 	//#date#posted#content
 	}
 	else {
-		my('#title, title').eacg(function () {this.innerHTML = '404 Not Found'})
+		my('#title, title').each(function () {this.innerHTML = '404 Not Found'})
 		my('#descript').html('Trang không tồn tại')
 	
 		my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn tại trên cơ sở dữ liệu')
 
 		my('#date').html(0)
 	}
-}
-	
+} 
 	</script>
 <style>
 * {
