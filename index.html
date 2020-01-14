@@ -427,7 +427,7 @@ console.error = console.warn = e => alert(e + '')
     </footer>
     <!-- footer -->
  
-    <script src="init-firebase.js"></script>
+    <script src="firebase-login.js"></script>
 <script>
 addEventListener('load', function () {
 new Vue({
@@ -466,7 +466,7 @@ new Vue({
     },
     mounted: function () {
         var _ = this
-        database.ref('posted-preview').orderByChild('time').limitToLast(10)
+        firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .once('value', function (e) {
             for (var i in e)
                 _.posts.push(e[i]);
