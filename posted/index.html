@@ -41,7 +41,7 @@
 <body>
 	<!-- mian-content -->
 	
-	<div id=loading hidden class="fixed-top w-100 h-100 bg-grey align-items">
+	<div id=loading class="fixed-top w-100 h-100 bg-grey align-items">
 		<img src=https://www.google.com/images/spin-32.gif />
 	</div>
 	
@@ -248,12 +248,12 @@
 	<!-- footer -->
 <script src=/firebase-login.js></script>
 	<script type=text/javascript>
-onerror = d => alert(d + "") 
+	
 function getRequest () {
     var url = location.href
     
     if (url.indexOf('?goto=') < 0)
-    	return {}
+    	return alert("404 Not Fould")
     
     var request = decodeURIComponent(
 		url.slice(
@@ -277,8 +277,12 @@ firebase.database().ref('posted')
 })
 
 function init (data) {
+
+    my('#loading').attr('hidden', true)
+
+    if (data) {
     
-    my('#title').html(data.title)
+    	my('#title').html(data.title)
     my('#descript').html(data.descript)
 	
 	my('#content').html(data.text)
@@ -288,7 +292,16 @@ function init (data) {
 	my('#date').html(new Date(data.time).toLocaleDateString().replace(/\//g, '.'))
 	//#date#posted#content
     
-    
+	//#date#posted#content
+    }
+    else {
+        my('#title').html('404 Not Found')
+    	my('#descript').html('Trang không tồn tại')
+	
+		my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn tại trên cơ sở dữ liệu')
+
+		my('#date').html(0)
+    }
 }
 	
 	</script>
@@ -329,6 +342,15 @@ body {
 
 #account > * {
     line-height: 40px;
+}
+
+#loading > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 </style>
 </body>
