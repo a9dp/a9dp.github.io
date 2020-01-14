@@ -507,7 +507,7 @@ new Vue({
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .once('value', function (e) {
             for (var i in e)
-                _.posts.push(e[i]);
+                alert(JSON.stringify(e)) ;
         })
         
     }
