@@ -81,10 +81,18 @@ FriendlyChat.prototype.post = function (e) {
 
 	var currentUser = this.auth.currentUser, _ = this;
 alert(currentUser.displayName) 
-
+var title, descript, text;
+title = my("#title").html()
+descript = my("#descript").html()
+text = my("#content").html()
+	  descript: descript,
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
-	  photoUrl: currentUser.photoURL || '/images/no-login.png'
+	  photoUrl: currentUser.photoURL || '/images/no-login.png',
+	  title: title,
+	  descript: descript,
+	  text: text,
+	  "image-descript": e 
 	}).then(function() {/*
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
