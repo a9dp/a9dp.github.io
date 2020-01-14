@@ -92,8 +92,7 @@ time = Date.now()
 	  title: title,
 	  descript: descript,
 	  text: text,
-	  time: time,
-	  "image-descript": e 
+	  time: time
 	}).then(function() {/*
 		_.database.ref("posted-preview").push({
 	  name: currentUser.displayName,
