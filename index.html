@@ -355,14 +355,14 @@ body {
                             <div class="col-lg-6  mt-lg-5 mt-4 mx-auto">
                     <div class="card">
                         <div class="card-header p-0 position-relative">
-                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')">
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + encode(blog.title)">
                                 <img class="card-img-bottom " :src="blog['img-descript']" :alt="blog.title">
                                 
                             </a>
                         </div>
                         <div class="card-body">
                             <h5 class="blog-title card-title font-weight-bold">
-                                <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')">{{ blog.title }}</a>
+                                <a :href="'https://a9dp.github.io/posted/index.html?goto=' + encode(blog.title)">{{ blog.title }}</a>
                             </h5>
                             <p v-html="blog.descript"></p>
                             <div class="blog-user-info d-flex my-3">
@@ -370,7 +370,7 @@ body {
                                 <label class="mx-3"> <span class="fa fa-clock-o mr-3"></span> {{ getTime(blog.time) }}</label>
                                 <label class=""> <span class="fa fa-calendar mr-3"></span> {{ getDate(blog.time) }}</label>
                             </div>
-                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + blog.title.replace(/ /g, '+')" class="btn blog-btn h_care-bnr-btn">  
+                            <a :href="'https://a9dp.github.io/posted/index.html?goto=' + encode(blog.title)" class="btn blog-btn h_care-bnr-btn">  
                                 Read more
                            </a>
                         </div>
@@ -477,6 +477,9 @@ new Vue({
         to2: function (e) {
             return e < 10 ? '0' + e : e
         },
+        encode: function (e) {
+            return encodeURIComponent(e)
+        }, 
         getDate: function (e) {
             var n = new Date(e)
             
