@@ -396,7 +396,7 @@ function init (data, key) {
 
 		var rate = data.rate
 	
-		var rateUs = rate[firebase
+		var rateUs = typeof rate === 'object' && rate[firebase
 		.auth().currentUser.uid] - 0
 			my('.rating[name="rating"]')
 		.each(function (key, val) {
