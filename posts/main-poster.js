@@ -80,7 +80,7 @@ FriendlyChat.prototype.post = function (e) {
 	if (this.checkSignedInWithMessage()) {
 
 	var currentUser = this.auth.currentUser, _ = this;
-
+/*
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
 	  text: my('#content').html(),
@@ -113,7 +113,7 @@ FriendlyChat.prototype.post = function (e) {
 		my('#loading')
 		.attr('hidden', true)
 	  console.error('Error writing to Firebase Database', error)
-	})
+	})*/
   }
 }
 
