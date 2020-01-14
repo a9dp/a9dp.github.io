@@ -81,17 +81,18 @@ FriendlyChat.prototype.post = function (e) {
 
 	var currentUser = this.auth.currentUser, _ = this;
 alert(currentUser.displayName) 
-var title, descript, text;
+var title, descript, text, time;
 title = my("#title").html()
 descript = my("#descript").html()
 text = my("#content").html()
-	  descript: descript,
+time = Date.now()
 	firebase.database().ref("posted").push({
 	  name: currentUser.displayName,
 	  photoUrl: currentUser.photoURL || '/images/no-login.png',
 	  title: title,
 	  descript: descript,
 	  text: text,
+	  time: time,
 	  "image-descript": e 
 	}).then(function() {/*
 		_.database.ref("posted-preview").push({
