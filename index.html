@@ -506,7 +506,7 @@ new Vue({
         var _ = this
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .on('child_added', function (e) {
-            _.posts.unshift(e)
+            _.posts.unshift(e.val())
         })
         
     }
