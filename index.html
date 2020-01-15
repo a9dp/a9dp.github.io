@@ -513,7 +513,7 @@ new Vue({
     },
     mounted: function () {
         var _ = this
-        my("#loading").unAttr("hidden")
+        //my("#loading").unAttr("hidden")
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .on('child_added', function (e) {
             _.posts.unshift(e.val())
