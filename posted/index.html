@@ -389,7 +389,7 @@ function init (data, _key) {
 
 	if (data) {
 		var n = 0, s = 0;
-		data.rate && my.each(function (key, val) {n++; s += val})
+		data.rate && my.each(data.rate, function (key, val) {n++; s += val})
 		my('#love').text(round(s / n))
 alert(JSON.stringify(data.rate)) 
 alert(s + '-' + n) 
