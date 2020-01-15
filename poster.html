@@ -247,9 +247,6 @@ Viết phần giới thiệu vào đây.
 	</footer>
 	<!-- footer -->
 	<script type=text/javascript>
-onerror = console.error = console.warn = function () {
- alert(arguments[0])
-}
 
 my('#title, #descript, #content')
 .each(function (e) {
@@ -300,7 +297,6 @@ my('#posted').click(function () {
 		left: '-100vw'
 	})
 	.change(function () {
-alert(010)
 		file = this.files[0]
 		var read = new FileReader
 		
@@ -369,7 +365,7 @@ time = Date.now()
 	.catch(function(error) {
 		my('#loading')
 		.attr('hidden', true)
-	  console.error('Error writing to Firebase Database', error)
+	  alert('Error writing to Firebase Database', error)
 	})
   }
 }
@@ -439,7 +435,7 @@ my('#post-blog').click(function () {
 		
 	}
 	else {
-		alert("You have login if active action this")
+		alert("Bạn phải đăng nhập để thực hiện hành động này.")
 	}
 	
 })
