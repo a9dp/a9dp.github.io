@@ -408,6 +408,7 @@ function init (data, _key) {
 alert(rateUs) 
 		my('.rating > input')
 		.each(function (key, val) {
+alert(key)
 		    if (rateUs && (key == rateUs))
 		    	this.checked = true;
 		my(this).off("change").on('change')
