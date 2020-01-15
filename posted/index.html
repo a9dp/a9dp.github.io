@@ -382,6 +382,16 @@ my('#content').html('Điều này gây ra bởi bài viết hiện khoonv tồn 
 
 my('#date').html(0)
 
+my('.rating > input').each(function (key, val) {
+    my(this).off("change").on('change')
+	.then(function (e) {
+	    if (!firebase.auth().currentUser) {
+		     alert("Chức năng này yêu cầu bạn đăng nhập")
+		        e.preventDefault()
+	    }
+}) 
+}) 
+
 function init (data, _key) {
 
 	my('#loading').attr('hidden', true)
