@@ -93,11 +93,6 @@ body {
 
 <body>
     <!-- mian-content -->
-
-	<div id=loading hidden class="fixed-top w-100 h-100 bg-grey align-items">
-		<img src=https://www.google.com/images/spin-32.gif />
-	</div>
-	
     <section class="main-content" id="home">
         <!-- /header -->
         <header>
@@ -513,11 +508,9 @@ new Vue({
     },
     mounted: function () {
         var _ = this
-        //my("#loading").unAttr("hidden")
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .on('child_added', function (e) {
             _.posts.unshift(e.val())
-            my("#loading").attr("hidden", true)
         })
         
     }
