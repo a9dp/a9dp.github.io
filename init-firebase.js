@@ -1,5 +1,3 @@
-onerror = console.error = console.warn = d => alert(d + '') 
-
 var config = {
 	apiKey: "AIzaSyATsprQmBaksAg7ZPoGGejFTLWclLP576Y",
 	authDomain: "glass-gasket-254006.firebaseapp.com",
@@ -21,94 +19,10 @@ function FriendlyChat() {
 
 
 FriendlyChat.prototype.initFirebase = function() {
-
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.storage = firebase.storage();
-  this.auth.onAuthStateChanged(
-	this.onAuthStateChanged
-	.bind(this)
-  )
 }
-
-FriendlyChat.prototype.loadMessages = function() {
-
-  this.messagesRef = this.database.ref('messages');
-
-  this.messagesRef.off();
-  this.messagesRef.limitToLast(12).on('child_added', setMessage);
-  this.messagesRef.limitToLast(12).on('child_changed', setMessage);
-};
-
-// Saves a new message on the Firebase DB.
-FriendlyChat.prototype.saveMessage = function(posted) {
-
-  if (posted && this.checkSignedInWithMessage()) {
-
-	var currentUser = this.auth.currentUser
-
-	this.messagesRef.push({
-	  name: currentUser.displayName,
-	  text: posted.text,
-	  title: posted.title,
-	  posted: posted.posted,
-	  time: Date.now(),
-	  photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
-	}).then(function() {
-		//
-	})
-	.catch(function(error) {
-	  console.error('Error writing to Firebase Database', error)
-	})
-  }
-}
-
-
-FriendlyChat.prototype.saveImagePoseted = function (file) {
-  
-  var myObject = my({})
-  if (this.checkSignedInWithMessage()) {
-
-	var e = this.storage
-	.ref('posted-image')
-	.put(file, {
-		contentType: file.type
-	})
-	
-	e.on("state_changed",
-	function () {
-		myObject.trigger('progess')
-	}, function () {
-		myObject.trigger('catch')
-	}, function () {
-		e.snapshot.ref
-		.getDownloadURL()
-		.then(function (url) {
-			myObject.trigger('then', url)
-		})
-	})
-
-  }
-  else myObject.trigger('catch');
-  
-  return {
-	  then: function (fn) {
-		  myObject.on('then')
-		  .then(function (e) {
-			  fn.call(this, e.detail)
-		  })
-	  },
-	  catch: function (fn) {
-		  myObject.on('catch')
-		  .then(function (e) {
-			  fn.call(this, e.detail)
-		  })
-	  }
-  }
-  
-}
-
-
 FriendlyChat.prototype.signIn = function() {
 
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -168,18 +82,6 @@ FriendlyChat.prototype.signOut = function() {
   this.auth.signOut();
 };
 
-
-FriendlyChat.prototype.onAuthStateChanged = function (user) {
-  if (user) {
-  
-	var profilePicUrl = user.photoURL;
-	var nane = user.displayName;
-
-  } else {
-  
-  }
-}
-
 // Returns true if user is signed-in. Otherwise false and displays a message.
 FriendlyChat.prototype.checkSignedInWithMessage = function() {
   if (this.auth.currentUser) {
@@ -188,18 +90,9 @@ FriendlyChat.prototype.checkSignedInWithMessage = function() {
   return false;
 };
 
-
 FriendlyChat.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-FriendlyChat.prototype.displayMessage = function(key, name, text, picUrl, imageUri) {
-  var div = document.getElementById(key);
-
-  this.messageList.scrollTop = this.messageList.scrollHeight;
-  this.messageInput.focus();
-};
-
-
 FriendlyChat.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !window.config) {
 	window.alert('You have not configured and imported the Firebase SDK. ' +
