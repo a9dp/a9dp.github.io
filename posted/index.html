@@ -389,8 +389,8 @@ function init (data, _key) {
 
 	if (data) {
 		var n = 0, s = 0;
-		data.rate && my.each(data.rate, function (key, val) {n++; s += val})
-		my('#love').text(round(s / n))
+		data.rate && my.each(data.rate, function (key, val) {n++; s += 5 - val})
+		my('#love').text((s / n).toFixed(2))
 alert(JSON.stringify(data.rate)) 
 alert(s + '-' + n) 
 		my('#title, title').each(function () {this.innerHTML = data.title})
