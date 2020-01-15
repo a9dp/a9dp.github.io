@@ -408,12 +408,13 @@ function init (data, _key) {
 		my('.rating > input')
 		.each(function (key, val) {
 		my(this).off("change").on('change')
-		.then(function () {
-			if (firebase.auth().currentUser) {
-		   firebase.database()
+		.then(function (e) {
+		    if (firebase.auth().currentUser) {
+		         firebase.database()
 		        .ref('posted/' + _key + '/rate/' + firebase.auth().currentUser.uid).set(key)
 		    } else {
 		        alert("Chức năng này yêu cầu bạn đăng nhập")
+		        e.preventDefault()
 		    }
 		})
 		})
