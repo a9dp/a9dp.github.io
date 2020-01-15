@@ -404,14 +404,10 @@ function init (data, _key) {
 
 		var rate = data.rate
 	
-		var rateUs = typeof rate === 'object' && rate[firebase
-		.auth().currentUser.uid]
-alert(rateUs) 
+		typeof rate === 'object' && my('.rating > input').eq(rate[firebase
+		.auth().currentUser.uid]).attr("checked", true)
 		my('.rating > input')
 		.each(function (key, val) {
-alert(key)
-		    if (rateUs && (key == rateUs))
-		    	this.checked = true;
 		my(this).off("change").on('change')
 		.then(function () {
 			if (firebase.auth().currentUser) {
