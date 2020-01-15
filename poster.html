@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Đăng bài viết A9DevTeam</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Đan Phượng, A9, 11a9, Dân Tổ, Tổ lái, Phá hoại, Nguyễn Văn Quang, Nguyễn Văn Dũng, Nguyễn Thị Hương, Nguyễn Thành, NguyenThanhDev, shin-dev" />
+<script src="my.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-storage.js"></script>
+
+<script src="init-firebase.js"></script>
+	<script>
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<!-- font-awesome-icons -->
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<!-- //font-awesome-icons -->
+	<!-- /Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+	<!-- //Fonts -->
+</head>
+<body>
+	<!-- mian-content -->
+	
+	<div id=loading hidden class="fixed-top w-100 h-100 bg-grey align-items">
+		<img src=https://www.google.com/images/spin-32.gif />
+	</div>
+	
+	<section class="main-content" id="home">
+		<!-- /header -->
+		<header>
+			<div class="container-fluid px-lg-5 px-3">
+				<!-- nav -->
+				<nav class="py-2 d-lg-flex">
+					<div id="logo">
+						<h1><a class="navbar-brand logo" href="index.html">
+								 A9DevTeam
+							</a></h1>
+					</div>
+					<label for="drop" class="toggle">Menu</label>
+					<input type="checkbox" id="drop" />
+					<ul class="menu ml-auto">
+						<li><a href="index.html">Trang chủ</a></li>
+						<li><a href="about.html">Giới thiệu</a></li>
+						<li><a href="thoi-khoa-bieu.html">Thời khóa biểu</a></li>
+						<!--<li>
+							<!-- First Tier Drop Down -->
+							<label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+							<a href="#">More Info <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+							<input type="checkbox" id="drop-2" />
+							<ul class="inner-ul">
+								<li><a href="index.html">Gallery</a></li>
+								<li><a href="index.html">Stats</a></li>
+								 <li><a href="index.html">Blog</a></li>
+							</ul>
+						</li>-->
+						<li class=active><a href="poster.html">Đăng bài</a></li> 
+						<li><a href="contact.html">Liên hệ</a></li>
+						<li id=account>
+						
+        <img id="user-pic"/>
+        <span hidden id="user-name"></span>
+        <a hidden id="sign-out">
+	     Đăng xuất
+        </a>
+        <a id="sign-in">
+	     Đăng nhập qua Facebook
+        </a>
+						</li>
+					</ul>
+				</nav>
+				<!-- //nav -->
+			</div>
+		</header>
+		<!-- //header -->
+		<!-- /banner-inner -->
+		<div class="page-inner">
+		</div>
+		<!---->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="index.html">Home</a>
+			</li>
+			<li class="breadcrumb-item active">Blog</li>
+		</ol>
+		<!-- //banner-inner -->
+	</section>
+	<!--// mian-content -->
+	<section class="ab-info-main py-md-5 py-4">
+		<div class="container py-md-5 py-4">
+			<h3 class="tittle text-center mb-lg-5 mb-3"> Blog</h3>
+			<div class="speak">
+				<div class="row mt-lg-5 mt-4">
+					<div class="col-md-12 events-img px-lg-0">
+						<img src="images/lich-nghi-hoc.jpg" class="img-fluid" alt="user-image" id=posted />
+					</div>
+					<div class="col-md-12 events-info my-3">
+						<h3><span class="sub-tittle">01</span> <span id=title>Tiêu đề</span>
+
+							</h3>
+						<h4 class="my-3"><a href="#" class="text-dark" id=descript>
+Viết phần giới thiệu vào đây.
+							</a></h4>
+						<ul class="single-info mt-md-4 my-3 d-flex">
+							<li><a href="#">12.01.2020<span class="fa fa-calendar"></span></a> </li>
+							<li><a href="#"><span class="fa fa-comment-o mx-1"></span> 0</a></li>
+							<li><a href="#"><span class="fa fa-heart-o"></span> 0 </a></li>
+						</ul>
+						<span id=content>Viết phần nội dung vào đây. Hỗ trợ HTML5! </span>
+						<ul class="social_section_1info mt-lg-5 mt-3">
+							<li class="fallow">Follow Us :</li>
+							<li class="mb-2 facebook"><a href="#"><i class="fa fa-facebook mr-1"></i>facebook</a></li>
+							<li class="mb-2 twitter"><a href="#"><i class="fa fa-twitter mr-1"></i>twitter</a></li>
+							<li class="google"><a href="#"><i class="fa fa-google-plus mr-1"></i>google</a></li>
+							<li class="linkedin"><a href="#"><i class="fa fa-linkedin mr-1"></i>linkedin</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="single-from-center mt-lg-5 mt-4">
+					<button class="btn btn-lg btn-dark btn-block" id=post-blog>Post Blog</button>
+				  </div>
+				<div class="single-form-left">
+					<!-- contact form grid -->
+					<div class="contact-single contact-form">
+						<h3>Leave a Reply</h3>
+						<form action="#" method="get" class="mt-4">
+							<div class="form-group">
+								<label for="contactcomment">Your Comment *</label>
+								<textarea class="form-control border" rows="5" id="contactcomment" required=""></textarea>
+							</div>
+							<div class="d-sm-flex">
+								<div class="col-sm-6 form-group p-0">
+									<label for="contactusername">Name *</label>
+									<input type="text" class="form-control border" id="contactusername" required="">
+								</div>
+								<div class="col-sm-6 form-group ml-sm-3">
+									<label for="contactemail">Email *</label>
+									<input type="email" class="form-control border" id="contactemail" required="">
+								</div>
+							</div>
+							<button type="submit" class="mt-3 btn btn-success btn-block py-3">Post Comment</button>
+						</form>
+					</div>
+					<!--  //contact form grid ends here -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- footer -->
+	<!-- footer -->
+	<footer class="footer-content py-sm-5 py-4">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="contact_grid_left">
+				<ul class="list-unstyled row loaction-content">
+					<li class="col-lg-4 address-content-inf-w3ls">
+						<div class="row">
+							<div class="col-md-3 icon-left">
+								<span class="fa fa-home"></span>
+							</div>
+							<div class="col-md-9 icon-right">
+								<h6>Address</h6>
+								<p>11A9 Đan Phượng
+									<br>Thành phố Hà Nội. </p>
+							</div>
+						</div>
+					</li>
+					<li class="col-lg-4 address-content-inf-w3ls">
+						<div class="row">
+							<div class="col-md-3 icon-left">
+								<span class="fa fa-envelope"></span>
+							</div>
+							<div class="col-md-9 icon-right">
+								<h6>Email</h6>
+								<a href="mailto:thanhnguyennguyen1995@gmail.com">thanhnguyennguyen1995@gmail.com</a>
+								<br>
+								<a href="mailto:nguyennhu2004@yahoo.com">nguyennhu2004@yahoo.com</a>
+							</div>
+						</div>
+					</li>
+					<li class="col-lg-4 address-content-inf-w3ls">
+						<div class="row">
+							<div class="col-md-3 icon-left">
+								<span class="fa fa-phone"></span>
+							</div>
+							<div class="col-md-9 icon-right">
+								<h6>Phone Number</h6>
+								<p>+ 1234567890</p>
+								<p>+ 0987654321</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- social icons footer -->
+			<div class="w3ls-footer text-center mt-4">
+				<ul class="list-unstyled">
+					<li>
+						<a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+					</li>
+					<li class="mx-1">
+						<a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fa fa-dribbble"></span>
+						</a>
+					</li>
+					<li class="ml-1">
+						<a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- copyright -->
+			<p class="copy-right-grids text-li text-center my-sm-4 my-4">© 2019 Nguyễn Thành. All Rights Reserved | Design by
+				<a href="http://w3layouts.com/"> Nguyễn Thành</a>
+			</p>
+			<div class="top_move text-center">
+				<a href="#home" class="move-top"><span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a>
+			</div>
+			<!-- //copyright -->
+		</div>
+	</footer>
+	<!-- footer -->
+	<script type=text/javascript>
+onerror = console.error = console.warn = function () {
+ alert(arguments[0])
+}
+
+my('#title, #descript, #content')
+.each(function (e) {
+	my(this).click(function (e) {
+		if (my(this).find('textarea[data-type="editer"]')[0])
+			return;
+			
+		try {
+			e.preventDefault()
+			e.stopPropagation()
+		} catch (e) {}
+		
+		var html = my(this).html()
+		
+		var _ = this
+		
+		var edit = my('<textarea>')
+		edit.data('type', 'editer')
+		
+		edit.html(html)
+		.css({
+			width: '100%'
+		})
+		.css({
+			height: my(this).innerHeight() + 'px'
+		})
+		.addClass('form-control border')
+		.blur(function () {
+			this.value = this.value.replace(/\n/g, '<br>')
+			my(_).html(this.value)
+		})
+		.focus()
+		my(this).empty()
+		.append(edit)
+		
+	})
+})
+my('#posted').click(function () {
+	var file, _ = this
+	var inpF = my('<input type=file accept="image/*,capture=camera">')
+	.appendTo('body')
+	.css({
+		display: 'none',
+		visible: 'none',
+		opacity: 0,
+		position: 'fixed',
+		top: '-100vh',
+		left: '-100vw'
+	})
+	.change(function () {
+alert(010)
+		file = this.files[0]
+		var read = new FileReader
+		
+		alert("read start")
+		read.onload = function () {
+			_.src = this.result
+		
+			_[my.expando + '-file'] = file
+		}
+		  read.readAsDataURL(file)
+	})
+	inpF[0].click()
+	inpF[0].focus()
+	
+	
+	
+})
+
+
+
+
+
+
+
+FriendlyChat.prototype.post = function (e) {
+	if (this.checkSignedInWithMessage()) {
+
+	var currentUser = this.auth.currentUser, _ = this;
+
+
+var title, descript, text, time;
+title = my("#title").html()
+descript = my("#descript").html()
+text = my("#content").html()
+time = Date.now()
+	firebase.database()
+	.ref("posted").push({
+	  name: currentUser.displayName,
+	  photoUrl: currentUser.photoURL || '/images/no-login.png',
+	  title: title,
+	  descript: descript,
+	  text: text,
+	  time: time,
+	  "img-descript": e ? e : ''
+	}).then(function() {
+		_.database.ref("posted-preview").push({
+	  		name: currentUser.displayName,
+	  		photoUrl: currentUser.photoURL || '/images/no-login.png',
+	  		title: title,
+	  		descript: descript,
+	  		time: time,
+	  		"img-descript": e ? e : ''
+		})
+		.then(function () {
+			my('#loading')
+			.attr('hidden', true)
+			alert("Đã đăng")
+		})
+		.catch(function (e) {
+			my('#loading')
+			.attr('hidden', true)
+			alert("Lỗi: " + e)
+		})
+
+	})
+	.catch(function(error) {
+		my('#loading')
+		.attr('hidden', true)
+	  console.error('Error writing to Firebase Database', error)
+	})
+  }
+}
+
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+	my('#user-pic').css("background-image", "url(" + user.photoURL + ")")
+	
+	my('#user-name').text(user.displayName).unAttr("hidden")
+	
+	my('#sign-out').unAttr('hidden')
+	
+	my('#sign-in').attr('hidden', true)
+	
+  } else {
+  	my('#user-pic').css("background-image",  'url("images/no-login.png")')
+
+	my('#user-name').attr('hidden', true)
+	
+	my('#sign-out').attr('hidden', true)
+	
+	my('#sign-in').unAttr('hidden')
+  }
+})
+
+my('#sign-in').click(function () {
+    friendlyChat.signInFb()
+})
+my('#sign-out').click(function () {
+    friendlyChat.signOut()
+})
+
+my('#post-blog').click(function () {
+	
+	if (friendlyChat.checkSignedInWithMessage()) {
+	
+		my('#loading')
+		.unAttr('hidden')
+		
+		var file = my('#posted')[0][my.expando + '-file']
+		if (file) {
+			// if file exists
+			
+			var sto = friendlyChat.storage
+			.ref('posted-image/' + Date.now()  + my.expando)
+			.put(file, {
+				contentType: file.type
+			})
+			
+			sto.on('state_changed',
+				function () {
+					
+				},
+				function () {
+					friendlyChat.post()
+				},
+				function () {
+					sto.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+			 friendlyChat.post(downloadURL)
+ })
+				}
+			)
+			
+		}
+		else friendlyChat.post();
+		
+	}
+	else {
+		alert("You have login if active action this")
+	}
+	
+})
+
+	</script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+#user-pic {
+  position: relative;
+  display: inline-block;
+  background-image: url('/images/no-login.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+  }
+}
+
+#account > * {
+    line-height: 40px;
+}
+#loading > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+</style>
+</body>
+</html>
+
