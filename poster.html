@@ -299,8 +299,6 @@ my('#posted').click(function () {
 	.change(function () {
 		file = this.files[0]
 		var read = new FileReader
-		
-		alert("read start")
 		read.onload = function () {
 			_.src = this.result
 		
