@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Lịch nghỉ tết 2020 A9DevTeam</title>
+	<title>Blog A9DevTeam</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -389,9 +389,7 @@ function init (data, _key) {
 	if (data) {
 		var n = 0, s = 0;
 		data.rate && my.each(data.rate, function (key, val) {n++; s += 5 - val})
-		my('#love').text((s / n).toFixed(2))
-alert(JSON.stringify(data.rate)) 
-alert(s + '-' + n) 
+		my('#love').text(n === 0 ? "Chưa được đánh giá" : (s / n).toFixed(1))
 		my('#title, title').each(function () {this.innerHTML = data.title})
 	my('#descript').html(data.descript)
 	
@@ -406,10 +404,11 @@ alert(s + '-' + n)
 		var rate = data.rate
 	
 		var rateUs = typeof rate === 'object' && rate[firebase
-		.auth().currentUser.uid] - 0
+		.auth().currentUser.uid]
+alert(rateUs) 
 		my('.rating > input')
 		.each(function (key, val) {
-		    if (rateUs && (key === rateUs))
+		    if (rateUs && (key == rateUs))
 		    	this.checked = true;
 		my(this).off("change").on('change')
 		.then(function () {
