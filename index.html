@@ -476,7 +476,7 @@ new Vue({
     },
     methods: {
         to2: function (e) {
-            return e < 10 ? '0' + e : e
+            return e - 0 < 10 ? '0' + e : e
         },
         encode: function (e) {
             return encodeURIComponent(e)
@@ -492,17 +492,14 @@ new Vue({
         },
         getTime: function (e) {
             var n = new Date(e)
-            var h = this.to2(n.getHours())
-			 var m = this.to2(n.getSeconds())
-
-			var d = h < 12 ? ' AM' : ' PM'
-			
-			if (h > 12) h -= 12
-			
-			return [
-				this.to2(h),
-				this.to2(m)
-			].join(':') + d
+            var h = n.getHours()
+	    var m = n.getSeconds()
+            var d = h < 12 ? ' AM' : ' PM'
+		if (h > 12) h -= 12
+	    return [
+	       this.to2(h),
+	       this.to2(m)
+            ].join(':') + d
 			
         }
     },
