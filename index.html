@@ -80,11 +80,24 @@ body {
 #account > * {
     line-height: 40px;
 }
+#loading > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
 </style>
 </head>
 
 <body>
     <!-- mian-content -->
+
+	<div id=loading class="fixed-top w-100 h-100 bg-grey align-items">
+		<img src=https://www.google.com/images/spin-32.gif />
+	</div>
+	
     <section class="main-content" id="home">
         <!-- /header -->
         <header>
@@ -503,6 +516,7 @@ new Vue({
         firebase.database().ref('posted-preview').orderByChild('time').limitToLast(10)
         .on('child_added', function (e) {
             _.posts.unshift(e.val())
+            my("#loading").attr("hidden", true)
         })
         
     }
