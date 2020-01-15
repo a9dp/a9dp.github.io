@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Thời khóa biểu A9DevTeam</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Đan Phượng, A9, 11a9, Dân Tổ, Tổ lái, Phá hoại, Nguyễn Văn Quang, Nguyễn Văn Dũng, Nguyễn Thị Hương, Nguyễn Thành, NguyenThanhDev, shin-dev" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="my.js"></script>
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+	<!-- //Fonts -->
+    <script src="my.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-storage.js"></script>
+    <script src="init-firebase.js"></script>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+#user-pic {
+  position: relative;
+  display: inline-block;
+  background-image: url('/images/no-login.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 610px) {
+  #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+  }
+}
+
+#account > * {
+    line-height: 40px;
+}
+</style>
+</head>
+<body>
+    <!-- mian-content -->
+    <section class="main-content" id="home">
+        <!-- /header -->
+        <header>
+            <div class="container-fluid px-lg-5 px-3">
+                <!-- nav -->
+                <nav class="py-2 d-lg-flex">
+                    <div id="logo">
+                        <h1><a class="navbar-brand logo" href="index.html">
+                                 A9DevTeam
+                            </a></h1>
+                    </div>
+                    <label for="drop" class="toggle">Menu</label>
+                    <input type="checkbox" id="drop" />
+                    <ul class="menu ml-auto">
+			<li><a href="../index.html">Trang chủ</a></li>
+			<li><a href="../about.html">Giới thiệu</a></li>
+			<li class=active><a href="../thoi-khoa-bieu.html">Thời khóa biểu</a></li>
+			<!--<li>
+				<label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+					<a href="#">More Info <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+					<input type="checkbox" id="drop-2" />
+					<ul class="inner-ul">
+						<li><a href="../index.html">Gallery</a></li>
+						<li><a href="../index.html">Stats</a></li>
+						<li><a href="../index.html">Blog</a></li>
+					</ul>
+			</li>-->
+			<li><a href="../poster.html">Đăng bài</a></li> 
+			<li><a href="../contact.html">Liên hệ</a></li>
+			<li id=account>
+				<img id="user-pic"/>
+        			<span hidden id="user-name"></span>
+        			<a hidden id="sign-out">
+	    				Đăng xuất
+        			</a>
+        			<a id="sign-in">
+	     				Đăng nhập qua Facebook
+        			</a>
+			</li> 
+                    </ul>
+                </nav>
+                <!-- //nav -->
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- /banner-inner -->
+        <div class="page-inner">
+        </div>
+        <!---->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">About</li>
+        </ol>
+        <!-- //banner-inner -->
+    </section>
+    <!--// mian-content -->
+    <!--/ about -->
+    <section class="about py-5" id="about">
+        <div class="container py-3">
+            <div class="header py-lg-5 py-3 text-center">
+                <h3 class="tittle mb-lg-3 mb-3">Thời khóa biểu</h3>
+            </div>
+            <div class="row about-grids mt-lg-5">
+                <div class="col-lg-6 ab-info">
+                    <h6 class="mb-3 text-center">Áp dụng từ 30.12.2019
+                    </h6>
+					  <h6 class=mb-3>
+					  	Buổi sáng
+					  </h6><small>
+					  <table class="table table-sm table-striped table-bordered table-light" id=buoi-sang>
+					  </table></small>
+					  <hr class=my-4>
+					  <h6 class=mb-3>
+					  	Buổi chiều
+					  </h6><small>
+					  <table class="table table-sm table-striped table-bordered table-light" id=buoi-chieu>
+					  </table></small>
+					  
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--// about -->
+    <!--/services -->
+        <!-- footer -->
+    <footer class="footer-content py-sm-5 py-4">
+        <div class="container py-xl-5 py-lg-3">
+            <div class="contact_grid_left">
+                <ul class="list-unstyled row loaction-content">
+                    <li class="col-lg-4 address-content-inf-w3ls">
+                        <div class="row">
+                            <div class="col-md-3 icon-left">
+                                <span class="fa fa-home"></span>
+                            </div>
+                            <div class="col-md-9 icon-right">
+                                <h6>Address</h6>
+                                <p>11A9 Đan Phượng
+                                    <br>Thành phố Hà Nội. </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-lg-4 address-content-inf-w3ls">
+                        <div class="row">
+                            <div class="col-md-3 icon-left">
+                                <span class="fa fa-envelope"></span>
+                            </div>
+                            <div class="col-md-9 icon-right">
+                                <h6>Email</h6>
+                                <a href="mailto:thanhnguyennguyen1995@gmail.com">thanhnguyennguyen1995@gmail.com</a>
+                                <br>
+                                <a href="mailto:nguyennhu2004@yahoo.com">nguyennhu2004@yahoo.com</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-lg-4 address-content-inf-w3ls">
+                        <div class="row">
+                            <div class="col-md-3 icon-left">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                            <div class="col-md-9 icon-right">
+                                <h6>Phone Number</h6>
+                                <p>+ 1234567890</p>
+                                <p>+ 0987654321</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- social icons footer -->
+            <div class="w3ls-footer text-center mt-4">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#">
+							<span class="fa fa-facebook-f"></span>
+						</a>
+                    </li>
+                    <li class="mx-1">
+                        <a href="#">
+							<span class="fa fa-twitter"></span>
+						</a>
+                    </li>
+                    <li>
+                        <a href="#">
+							<span class="fa fa-dribbble"></span>
+						</a>
+                    </li>
+                    <li class="ml-1">
+                        <a href="#">
+							<span class="fa fa-vk"></span>
+						</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- copyright -->
+            <p class="copy-right-grids text-li text-center my-sm-4 my-4">© 2019 Nguyễn Thành. All Rights Reserved | Design by
+                <a href="http://w3layouts.com/"> Nguyễn Thành</a>
+            </p>
+            <div class="top_move text-center">
+                <a href="#home" class="move-top"><span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a>
+            </div>
+            <!-- //copyright -->
+        </div>
+    </footer>
+    <!-- footer -->
+    <script src=firebase-login.js></script>
+	<script>
+	var sang = [
+		'Ch.Cờ Anh GDQP Sinh Sinh Hóa'.split(' '),
+		'Anh Lý BSAnh TD Địa Toán'.split(' '),
+		'BSLý TD Hóa Văn Văn Sử'.split(' '),
+		'Lý Toán BSToán Văn GDCD C.Nghệ'.split(' '),
+		'Toán C.Nghệ Anh Tin BSHóa SHL'.split(' ')
+	]
+	
+	var t = '<tr><th>Thứ 2</th><th>Thứ 3</th><th>Thứ 4</th><th>Thứ 5</th><th>Thứ 6</th><th>Thứ 7</th></tr>'
+
+	my('#buoi-sang').append(t)
+	my('#buoi-chieu').append(t)
+	
+	var chieu = [
+		'    '.split(' '),
+		'Hóa    Toán '.split(' '),
+		'Hóa    Toán '.split(' '),
+		'Lý    Toán '.split(' '),
+		'Lý      '.split(' ')
+	]
+	
+	my.each(sang, function (i, j) {
+	    var tr = my('<tr></tr>')
+	    my.each(j, function (q, k) {
+    		tr.append('<td>' + k + '</td>')
+		})
+	    
+	    my('#buoi-sang').append(tr)
+	    
+	})
+	
+	my.each(chieu, function (i, j) {
+	    var tr = my('<tr></tr>')
+	    my.each(j, function (q, k) {
+    		tr.append('<td>' + k + '</td>')
+		})
+	    
+	    my('#buoi-chieu').append(tr)
+	    
+	})
+
+	</script>
+</body>
+</html>
